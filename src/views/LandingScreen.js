@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, {Component} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -12,64 +12,78 @@ import Tabs from '../components/Tabs';
 import Header from '../components/Header';
 import Content from '../components/Content';
 
-
-const IMAGE_HEIGHT = 200
+const IMAGE_HEIGHT = 200;
 
 class LandingScreen extends Component {
-
-  statusBarHeight = 0
-  tabsScroll = new Animated.Value(0)
+  statusBarHeight = 0;
+  tabsScroll = new Animated.Value(0);
 
   constructor() {
-    super()
+    super();
 
     this.tabsTop = this.tabsScroll.interpolate({
       inputRange: [30, IMAGE_HEIGHT],
       outputRange: [IMAGE_HEIGHT + this.statusBarHeight, this.statusBarHeight],
       extrapolateLeft: 'extend',
       extrapolateRight: 'clamp',
-    })
+    });
   }
-
 
   render() {
     return (
         <>
-          <StatusBar barStyle="dark-content"/>
+          <StatusBar barStyle="dark-content" />
           <SafeAreaView style={styles.container}>
             <ScrollView
                 contentInsetAdjustmentBehavior="automatic"
                 style={styles.scrollView}
                 scrollEventThrottle={16}
-                onScroll={
-                  Animated.event(
-                      [{
-                        nativeEvent: {
-                          contentOffset: {
-                            y: this.tabsScroll
-                          }
-                        }
-                      }]
-                  )
-                }
-            >
-              <Header/>
+                onScroll={Animated.event([
+                  {
+                    nativeEvent: {
+                      contentOffset: {
+                        y: this.tabsScroll,
+                      },
+                    },
+                  },
+                ])}>
+              <Header />
               <View style={styles.body}>
-                <Content title='Step One'/>
-                <Content title='Step Two'/>
-                <Content title='Step Three'/>
-                <Content title='Step Four'/>
-                <Content title='Step Five'/>
-                <Content title='Step Six'/>
-                <Content title='Step Seven'/>
+                <Content
+                    title="Step One"
+                    description="Build school Wellawaya Sri Lanka "
+                />
+                <Content
+                    title="Step Two"
+                    description="Build school Colombo at Sri Lanka "
+                />
+                <Content
+                    title="Step Three"
+                    description="Build school Kandy Sri Lanka "
+                />
+                <Content
+                    title="Step Four"
+                    description="Build school Kurunegala Sri Lanka "
+                />
+                <Content
+                    title="Step Five"
+                    description="Build school Dehiwala Sri Lanka "
+                />
+                <Content
+                    title="Step Six"
+                    description="Build school Panadura Sri Lanka "
+                />
+                <Content
+                    title="Step Seven"
+                    description="Build school Kalutare Sri Lanka "
+                />
               </View>
             </ScrollView>
-            <Tabs style={{transform: [{translateY: this.tabsTop}]}}/>
+            <Tabs style={{transform: [{translateY: this.tabsTop}]}} />
           </SafeAreaView>
         </>
     );
   }
-
 }
 
 const styles = StyleSheet.create({
@@ -81,7 +95,7 @@ const styles = StyleSheet.create({
   image: {
     height: IMAGE_HEIGHT,
     width: '88%',
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
 
   tabText: {
@@ -91,7 +105,6 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     color: 'black',
     textAlign: 'center',
-
   },
 
   body: {
@@ -99,8 +112,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingTop: 60,
   },
-
-
 });
 
 export default LandingScreen;
