@@ -52,30 +52,37 @@ class LandingScreen extends Component {
                 <Content
                     title="Step One"
                     description="Build school Wellawaya Sri Lanka "
+                    amount="$ 8900"
                 />
                 <Content
                     title="Step Two"
                     description="Build school Colombo at Sri Lanka "
+                    amount="$ 6900"
                 />
                 <Content
                     title="Step Three"
                     description="Build school Kandy Sri Lanka "
+                    amount="$ 4900"
                 />
                 <Content
                     title="Step Four"
                     description="Build school Kurunegala Sri Lanka "
+                    amount="$ 5600"
                 />
                 <Content
                     title="Step Five"
                     description="Build school Dehiwala Sri Lanka "
+                    amount="$ 1900"
                 />
                 <Content
                     title="Step Six"
                     description="Build school Panadura Sri Lanka "
+                    amount="$ 2900"
                 />
                 <Content
                     title="Step Seven"
                     description="Build school Kalutare Sri Lanka "
+                    amount="$ 5000"
                 />
               </View>
             </ScrollView>
