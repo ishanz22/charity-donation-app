@@ -2,64 +2,64 @@ import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import React, {Fragment, useState} from 'react';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Slider from '@react-native-community/slider';
-
-
 import PayCard from './cards/PayCard';
 import DoneCard from './cards/DoneCard';
 const Content = ({title, description, amount, img}) => {
+  const [currentComponent, setCurrentComponent] = useState(1);
 
-  const [currentComponent, setCurrentComponent] = useState(1)
-
-  const onButtonClick = (data) => {
-    setCurrentComponent(data)
+  const onButtonClick = data => {
+    setCurrentComponent(data);
   };
   return (
     <Fragment>
       {/* <PayCard/> */}
       {/* <DoneCard/>  */}
-   
-      {currentComponent==1 ? <View style={[styles.sectionContainer]}>
-        {/* <Text style={styles.sectionTitle}>{title}</Text> */}
-        <View style={{alignItems: 'center'}}>
-          <Text> </Text>
-          {
-            <Image
-              style={{
-                alignItems: 'center',
-                width: '100%',
-                borderRadius: 10,
-              }}
-              source={img}
-            />
-          }
-        </View>
 
-        <Text style={styles.sectionDescription}>{description}</Text>
-
-        <Slider
-          style={{width: '100%', height: 33}}
-          minimumValue={0}
-          maximumValue={10}
-          step={3.5}
-          maximumTrackTintColor="#C8C8C8"
-          minimumTrackTintColor="#FDA06E"
-          thumbTintColor="#FDA06E"
-        />
-        <Text style={styles.sectionAmount}>
-          {amount}
-          <Text style={{color: '#BEBEBE', fontWeight: '200', fontSize: 17}}>
-            {' '}
-            Raised
-          </Text>
-        </Text>
-        <TouchableOpacity onPress={()=>onButtonClick(2)}>
-          <View style={styles.buttonLogin}>
-            <Text style={{color: 'white', fontWeight: 'bold'}}>Donate Now</Text>
+      {currentComponent == 1 ? (
+        <View style={[styles.sectionContainer]}>
+          <View style={{alignItems: 'center', paddingTop: '10%'}}>
+            {
+              <Image
+                style={{
+                  alignItems: 'center',
+                  width: '100%',
+                  borderRadius: 10,
+                  height: 152,
+                }}
+                source={img}
+              />
+            }
           </View>
-        </TouchableOpacity>
-        <Text> </Text>
-      </View> : currentComponent==2 ?<PayCard onButtonClick={onButtonClick}/> : currentComponent==3 ? <DoneCard onButtonClick={onButtonClick}/>   : null}
-      
+
+          <Text style={styles.sectionDescription}>{description}</Text>
+
+          <Slider
+            style={{width: '100%', height: 33}}
+            minimumValue={0}
+            maximumValue={10}
+            step={1.5}
+            maximumTrackTintColor="#C8C8C8"
+            minimumTrackTintColor="#FDA06E"
+            thumbTintColor="#FDA06E"
+          />
+          <Text style={styles.sectionAmount}>
+            {amount}
+            <Text style={{color: '#BEBEBE', fontSize: 17}}> Raised</Text>
+          </Text>
+          <TouchableOpacity onPress={() => onButtonClick(2)}>
+            <View style={styles.buttonLogin}>
+              <Text style={{color: 'white', fontWeight: 'bold'}}>
+                Donate Now
+              </Text>
+            </View>
+          </TouchableOpacity>
+          <Text> </Text>
+        </View>
+      ) : currentComponent == 2 ? (
+        <PayCard onButtonClick={onButtonClick} />
+      ) : currentComponent == 3 ? (
+        <DoneCard onButtonClick={onButtonClick} />
+      ) : null}
     </Fragment>
   );
 };
@@ -69,15 +69,14 @@ export default Content;
 const styles = StyleSheet.create({
   sectionContainer: {
     marginTop: 32,
+    borderRadius: 10,
     paddingHorizontal: 24,
-    marginHorizontal: '5.5%',
+    marginHorizontal: '4%',
 
     shadowRadius: 12.35,
-
-
+    shadowColor: '#A9A9A9',
 
     elevation: 6,
-    borderRadius: 10,
   },
   sectionTitle: {
     fontSize: 24,
@@ -117,13 +116,11 @@ const styles = StyleSheet.create({
     marginTop: '6%',
   },
   buttonLogin: {
-   
     paddingVertical: '4%',
-    borderWidth:1,
-    borderColor:'white',
+    borderWidth: 1,
+    borderColor: 'white',
     alignItems: 'center',
     borderRadius: 10,
-    backgroundColor:'#818BE9',
-   
+    backgroundColor: '#818BE9',
   },
 });

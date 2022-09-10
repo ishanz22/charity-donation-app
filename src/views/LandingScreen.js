@@ -14,26 +14,35 @@ import Content from '../components/Content';
 
 const IMAGE_HEIGHT = 200;
 
-const contentArr=[
+const contentArr = [
   {
-    img:require('../assets/Frame.png'),
-    title:"Step One",
-    description:"Build school Wellawaya Sri Lanka ",
-    amount:"$ 8900"
+    img: require('../assets/frame.webp'),
+    title: 'Step One',
+    description: 'Build school Wellawaya Sri Lanka ',
+    amount: '$ 8900',
   },
   {
-    img:require('../assets/Frame.png'),
-    title:"Step Two",
-    description:"Build school Wellawaya Sri Lanka ",
-    amount:"$ 8900"
+    img: require('../assets/frame2.webp'),
+    title: 'Step Two',
+    description: 'Build school Wellawaya Sri Lanka ',
+    amount: '$ 9000',
   },
   {
-    img:require('../assets/Frame.png'),
-    title:"Step Three",
-    description:"Build school Wellawaya Sri Lanka ",
-    amount:"$ 8900"
-  }
-]
+    img: {
+      uri: 'https://images.pexels.com/photos/1172253/pexels-photo-1172253.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+    },
+
+    title: 'Step Three',
+    description: 'Build school Wellawaya Sri Lanka ',
+    amount: '$ 7500',
+  },
+  {
+    img: require('../assets/background.webp'),
+    title: 'Step Three',
+    description: 'Build school Wellawaya Sri Lanka ',
+    amount: '$ 9900',
+  },
+];
 class LandingScreen extends Component {
   statusBarHeight = 0;
   tabsScroll = new Animated.Value(0);
@@ -51,36 +60,36 @@ class LandingScreen extends Component {
 
   render() {
     return (
-        <>
-          <StatusBar barStyle="dark-content" />
-          <SafeAreaView style={styles.container}>
-            <ScrollView
-                contentInsetAdjustmentBehavior="automatic"
-                style={styles.scrollView}
-                scrollEventThrottle={16}
-                onScroll={Animated.event([
-                  {
-                    nativeEvent: {
-                      contentOffset: {
-                        y: this.tabsScroll,
-                      },
-                    },
+      <>
+        <StatusBar barStyle="light-content" />
+        <SafeAreaView style={styles.container}>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            contentInsetAdjustmentBehavior="automatic"
+            style={styles.scrollView}
+            scrollEventThrottle={16}
+            onScroll={Animated.event([
+              {
+                nativeEvent: {
+                  contentOffset: {
+                    y: this.tabsScroll,
                   },
-                ])}>
-              <Header />
-              <View style={styles.body}>
+                },
+              },
+            ])}>
+            <Header />
+            <View style={styles.body}>
+              {contentArr.map((el, i) => (
+                <Content
+                  key={i}
+                  img={el.img}
+                  title={el.title}
+                  description={el.description}
+                  amount={el.amount}
+                />
+              ))}
 
-                {contentArr.map((el,i)=>
-                    <Content
-                        key={i}
-                        img={el.img}
-                        title={el.title}
-                        description={el.description}
-                        amount={el.amount}
-                    />
-                )}
-
-                {/* <Content
+              {/* <Content
                 img={require('../assets/Frame.png')}
                 title="Step Two"
                 description="Build school Colombo at Sri Lanka "
@@ -116,11 +125,11 @@ class LandingScreen extends Component {
                 description="Build school Kalutare Sri Lanka "
                 amount="$ 5000"
               /> */}
-              </View>
-            </ScrollView>
-            <Tabs style={{transform: [{translateY: this.tabsTop}]}} />
-          </SafeAreaView>
-        </>
+            </View>
+          </ScrollView>
+          <Tabs style={{transform: [{translateY: this.tabsTop}]}} />
+        </SafeAreaView>
+      </>
     );
   }
 }
@@ -150,7 +159,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     paddingTop: 60,
-    paddingBottom:40
+    paddingBottom: 40,
   },
 });
 

@@ -14,11 +14,10 @@ const PayCard = ({onButtonClick}) => {
         <View style={styles.closeButton}>
           <Image
             style={{alignSelf: 'center', width: 22, height: 22}}
-            source={require('../../assets/close.png')}
+            source={require('../../assets/close.webp')}
           />
         </View>
       </TouchableOpacity>
-      {/* <Text style={styles.sectionTitle}>{title}</Text> */}
       <View style={{alignItems: 'center'}}></View>
 
       <Text style={styles.sectionSelectAmount}>
@@ -27,7 +26,7 @@ const PayCard = ({onButtonClick}) => {
 
       <RadioButtons />
 
-      <TouchableOpacity  onPress={() => callback(3)}>
+      <TouchableOpacity onPress={() => callback(3)}>
         <View style={styles.buttonLogin}>
           <Text style={{color: 'white', fontWeight: 'bold'}}>Pay Now</Text>
         </View>
@@ -42,15 +41,15 @@ export default PayCard;
 const styles = StyleSheet.create({
   sectionContainer: {
     marginTop: 32,
+    borderRadius: 10,
     paddingHorizontal: 24,
-    marginHorizontal: '5.5%',
+    marginHorizontal: '4%',
 
     shadowRadius: 12.35,
-
+    shadowColor: '#A9A9A9',
 
 
     elevation: 6,
-    borderRadius: 10,
   },
   sectionTitle: {
     fontSize: 24,

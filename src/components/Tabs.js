@@ -10,12 +10,12 @@ const Tabs = ({style}) => {
           alignItems: 'center',
           alignSelf: 'center',
         }}>
-        <Image source={require('../assets/Group.png')} />
+        <Image source={require('../assets/logo.webp')} />
         <Text
           style={{
             textAlign: 'center',
             fontSize: 28,
-            marginTop: '5%',
+            marginTop: '7%',
             fontWeight: 'bold',
             color: 'black',
           }}>
