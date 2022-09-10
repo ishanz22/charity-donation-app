@@ -2,7 +2,8 @@ import {View, Image, StyleSheet} from 'react-native'
 import React from 'react'
 
 const IMAGE_HEIGHT = 200
-const Header = () => (
+const Header = () => {
+return(
     <View style={{backgroundColor: 'white', paddingTop: '5%'}}>
         <Image
             source={require('../assets/banner.png')}
@@ -10,7 +11,7 @@ const Header = () => (
             style={styles.image}
         />
     </View>
-);
+)};
 
 export default Header
 
