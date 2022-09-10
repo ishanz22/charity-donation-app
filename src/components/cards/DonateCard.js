@@ -1,8 +1,8 @@
-import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
 import React from 'react';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Slider from '@react-native-community/slider';
-import Button from '../../components/Button';
+
 const  DonateCard = ({title, description, amount}) => {
   return (
     <View style={[styles.sectionContainer]}>

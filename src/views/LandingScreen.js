@@ -14,6 +14,26 @@ import Content from '../components/Content';
 
 const IMAGE_HEIGHT = 200;
 
+const contentArr=[
+  {
+    img:require('../assets/Frame.png'),
+    title:"Step One",
+    description:"Build school Wellawaya Sri Lanka ",
+    amount:"$ 8900"
+  },
+  {
+    img:require('../assets/Frame.png'),
+    title:"Step Two",
+    description:"Build school Wellawaya Sri Lanka ",
+    amount:"$ 8900"
+  },
+  {
+    img:require('../assets/Frame.png'),
+    title:"Step Three",
+    description:"Build school Wellawaya Sri Lanka ",
+    amount:"$ 8900"
+  }
+]
 class LandingScreen extends Component {
   statusBarHeight = 0;
   tabsScroll = new Animated.Value(0);
@@ -49,41 +69,53 @@ class LandingScreen extends Component {
                 ])}>
               <Header />
               <View style={styles.body}>
-                <Content
-                    title="Step One"
-                    description="Build school Wellawaya Sri Lanka "
-                    amount="$ 8900"
-                />
-                <Content
-                    title="Step Two"
-                    description="Build school Colombo at Sri Lanka "
-                    amount="$ 6900"
-                />
-                <Content
-                    title="Step Three"
-                    description="Build school Kandy Sri Lanka "
-                    amount="$ 4900"
-                />
-                <Content
-                    title="Step Four"
-                    description="Build school Kurunegala Sri Lanka "
-                    amount="$ 5600"
-                />
-                <Content
-                    title="Step Five"
-                    description="Build school Dehiwala Sri Lanka "
-                    amount="$ 1900"
-                />
-                <Content
-                    title="Step Six"
-                    description="Build school Panadura Sri Lanka "
-                    amount="$ 2900"
-                />
-                <Content
-                    title="Step Seven"
-                    description="Build school Kalutare Sri Lanka "
-                    amount="$ 5000"
-                />
+
+                {contentArr.map((el,i)=>
+                    <Content
+                        key={i}
+                        img={el.img}
+                        title={el.title}
+                        description={el.description}
+                        amount={el.amount}
+                    />
+                )}
+
+                {/* <Content
+                img={require('../assets/Frame.png')}
+                title="Step Two"
+                description="Build school Colombo at Sri Lanka "
+                amount="$ 6900"
+              />
+              <Content
+               img={require('../assets/Frame.png')}
+                title="Step Three"
+                description="Build school Kandy Sri Lanka "
+                amount="$ 4900"
+              />
+              <Content
+                img={require('../assets/Frame.png')}
+                title="Step Four"
+                description="Build school Kurunegala Sri Lanka "
+                amount="$ 5600"
+              />
+              <Content
+               img={require('../assets/Frame.png')}
+                title="Step Five"
+                description="Build school Dehiwala Sri Lanka "
+                amount="$ 1900"
+              />
+              <Content
+              img={require('../assets/Frame.png')}
+                title="Step Six"
+                description="Build school Panadura Sri Lanka "
+                amount="$ 2900"
+              />
+              <Content
+                img={require('../assets/Frame.png')}
+                title="Step Seven"
+                description="Build school Kalutare Sri Lanka "
+                amount="$ 5000"
+              /> */}
               </View>
             </ScrollView>
             <Tabs style={{transform: [{translateY: this.tabsTop}]}} />
@@ -118,6 +150,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     paddingTop: 60,
+    paddingBottom:40
   },
 });
 

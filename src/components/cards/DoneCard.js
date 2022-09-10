@@ -1,23 +1,24 @@
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import Slider from '@react-native-community/slider';
-import PayButton from '../../components/PayButton';
-import RadioButtons from '../../components/RadioButtons';
+
+
 import {LinearTextGradient} from 'react-native-text-gradient';
-import DoneButton from '../DoneButton';
-const DoneCard = () => {
+const DoneCard = ({onButtonClick}) => {
+
+  function callback(data) {
+    onButtonClick(data);
+  }
   return (
     <View style={[styles.sectionContainer]}>
       <Image
         style={{alignSelf: 'center'}}
         source={require('../../assets/Success.png')}
+        // resizeMode={'center'}
       />
       {/* <Text style={styles.sectionTitle}>{title}</Text> */}
       <View style={{alignItems: 'center'}}></View>
-     
-
-
+   
 
       <LinearTextGradient
         u
@@ -30,7 +31,11 @@ const DoneCard = () => {
       
       </LinearTextGradient>
       <Text>{' '}</Text>
-      <DoneButton />
+      <TouchableOpacity onPress={() => callback(1)} >
+    <View style={styles.buttonLogin}>
+      <Text style={{color: 'white', fontWeight: 'bold'}}>Done</Text>
+    </View>
+  </TouchableOpacity>
       <Text> </Text>
     </View>
   );
@@ -87,5 +92,15 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: 'center',
     marginTop: '6%',
+  },
+  buttonLogin: {
+   
+    paddingVertical: '4%',
+    borderWidth:1,
+    borderColor:'white',
+    alignItems: 'center',
+    borderRadius: 10,
+    backgroundColor:'#AF93FF',
+   
   },
 });
