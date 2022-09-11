@@ -11,9 +11,9 @@ import Tabs from '../components/Tabs';
 import Header from '../components/Header';
 import Content from '../components/Content';
 import axios from 'axios';
-
-
 const IMAGE_HEIGHT = 200;
+
+/*  Second step => Static Data
 const contentArr = [
   {
     img: require('../assets/frame.webp'),
@@ -42,9 +42,12 @@ const contentArr = [
     description: 'Build school Wellawaya Sri Lanka ',
     amount: '$ 9900',
   },
-];
+]; */
 class LandingScreen extends Component {
-
+  state = {
+    arrList: [],
+    itemCount: 15,
+  };
   statusBarHeight = 0;
   tabsScroll = new Animated.Value(0);
 
@@ -59,20 +62,22 @@ class LandingScreen extends Component {
     });
   }
 
-  componentDidMount(){
-    console.log("start");
+  componentDidMount() {
+    console.log('start');
     axios
         .get(
-            "https://07fplmn2nd.execute-api.us-west-2.amazonaws.com/dev/fundraising?pagination=0&limit=1",
+            `https://07fplmn2nd.execute-api.us-west-2.amazonaws.com/dev/fundraising?pagination=0&limit=${this.state.itemCount}`,
             {
               headers: {
-                "x-api-key": "RHtTMSSIsm4ecSAfaHq4N7HpaMOJBv5utDDhp1ch",
+                'x-api-key': 'RHtTMSSIsm4ecSAfaHq4N7HpaMOJBv5utDDhp1ch',
               },
-            }
+            },
         )
-        .then(function (response) {
-          console.log(response.data.data);
+        .then(res => {
+          this.setState({arrList: res.data.data});
+          // console.log(this.state.arrList);
         })
+
         .catch(function (error) {
           console.log(error);
         });
@@ -99,17 +104,19 @@ class LandingScreen extends Component {
                 ])}>
               <Header />
               <View style={styles.body}>
-                {contentArr.map((el, i) => (
+                {this.state.arrList.map((el, i) => (
                     <Content
                         key={i}
-                        img={el.img}
+                        img={el.urls.small}
                         title={el.title}
-                        description={el.description}
-                        amount={el.amount}
+                        description={el.title}
+                        amount={el.target_amount}
                     />
                 ))}
 
-                {/* <Content
+                {/* First step => Static Data
+
+              <Content
                 img={require('../assets/Frame.png')}
                 title="Step Two"
                 description="Build school Colombo at Sri Lanka "
