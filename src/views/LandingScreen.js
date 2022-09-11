@@ -7,13 +7,13 @@ import {
   StatusBar,
   Animated,
 } from 'react-native';
-
 import Tabs from '../components/Tabs';
 import Header from '../components/Header';
 import Content from '../components/Content';
+import axios from 'axios';
+
 
 const IMAGE_HEIGHT = 200;
-
 const contentArr = [
   {
     img: require('../assets/frame.webp'),
@@ -44,6 +44,7 @@ const contentArr = [
   },
 ];
 class LandingScreen extends Component {
+
   statusBarHeight = 0;
   tabsScroll = new Animated.Value(0);
 
@@ -58,38 +59,57 @@ class LandingScreen extends Component {
     });
   }
 
+  componentDidMount(){
+    console.log("start");
+    axios
+        .get(
+            "https://07fplmn2nd.execute-api.us-west-2.amazonaws.com/dev/fundraising?pagination=0&limit=1",
+            {
+              headers: {
+                "x-api-key": "RHtTMSSIsm4ecSAfaHq4N7HpaMOJBv5utDDhp1ch",
+              },
+            }
+        )
+        .then(function (response) {
+          console.log(response.data.data);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+  }
+
   render() {
     return (
-      <>
-        <StatusBar barStyle="light-content" />
-        <SafeAreaView style={styles.container}>
-          <ScrollView
-            showsVerticalScrollIndicator={false}
-            contentInsetAdjustmentBehavior="automatic"
-            style={styles.scrollView}
-            scrollEventThrottle={16}
-            onScroll={Animated.event([
-              {
-                nativeEvent: {
-                  contentOffset: {
-                    y: this.tabsScroll,
+        <>
+          <StatusBar barStyle="light-content" />
+          <SafeAreaView style={styles.container}>
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+                contentInsetAdjustmentBehavior="automatic"
+                style={styles.scrollView}
+                scrollEventThrottle={16}
+                onScroll={Animated.event([
+                  {
+                    nativeEvent: {
+                      contentOffset: {
+                        y: this.tabsScroll,
+                      },
+                    },
                   },
-                },
-              },
-            ])}>
-            <Header />
-            <View style={styles.body}>
-              {contentArr.map((el, i) => (
-                <Content
-                  key={i}
-                  img={el.img}
-                  title={el.title}
-                  description={el.description}
-                  amount={el.amount}
-                />
-              ))}
+                ])}>
+              <Header />
+              <View style={styles.body}>
+                {contentArr.map((el, i) => (
+                    <Content
+                        key={i}
+                        img={el.img}
+                        title={el.title}
+                        description={el.description}
+                        amount={el.amount}
+                    />
+                ))}
 
-              {/* <Content
+                {/* <Content
                 img={require('../assets/Frame.png')}
                 title="Step Two"
                 description="Build school Colombo at Sri Lanka "
@@ -125,11 +145,11 @@ class LandingScreen extends Component {
                 description="Build school Kalutare Sri Lanka "
                 amount="$ 5000"
               /> */}
-            </View>
-          </ScrollView>
-          <Tabs style={{transform: [{translateY: this.tabsTop}]}} />
-        </SafeAreaView>
-      </>
+              </View>
+            </ScrollView>
+            <Tabs style={{transform: [{translateY: this.tabsTop}]}} />
+          </SafeAreaView>
+        </>
     );
   }
 }
