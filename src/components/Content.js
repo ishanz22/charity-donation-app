@@ -34,6 +34,7 @@ const Content = ({title, description, amount, img}) => {
           <Text style={styles.sectionDescription}>{description}</Text>
 
           <Slider
+            value={Math.floor(Math.random() * 9) + 1}
             style={{width: '100%', height: 33}}
             minimumValue={0}
             maximumValue={10}
@@ -68,7 +69,7 @@ export default Content;
 
 const styles = StyleSheet.create({
   sectionContainer: {
-    marginTop: 32,
+    marginTop: 25.5,
     borderRadius: 10,
     paddingHorizontal: 24,
     marginHorizontal: '4%',

@@ -2,6 +2,7 @@ import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {LinearTextGradient} from 'react-native-text-gradient';
+
 const DoneCard = ({onButtonClick}) => {
   function callback(data) {
     onButtonClick(data);
@@ -47,7 +48,6 @@ const styles = StyleSheet.create({
 
     shadowRadius: 12.35,
     shadowColor: '#A9A9A9',
-
 
     elevation: 6,
   },

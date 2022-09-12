@@ -65,57 +65,57 @@ class LandingScreen extends Component {
   componentDidMount() {
     console.log('start');
     axios
-        .get(
-            `https://07fplmn2nd.execute-api.us-west-2.amazonaws.com/dev/fundraising?pagination=0&limit=${this.state.itemCount}`,
-            {
-              headers: {
-                'x-api-key': 'RHtTMSSIsm4ecSAfaHq4N7HpaMOJBv5utDDhp1ch',
-              },
-            },
-        )
-        .then(res => {
-          this.setState({arrList: res.data.data});
-          // console.log(this.state.arrList);
-        })
+      .get(
+        `https://07fplmn2nd.execute-api.us-west-2.amazonaws.com/dev/fundraising?pagination=0&limit=${this.state.itemCount}`,
+        {
+          headers: {
+            'x-api-key': 'RHtTMSSIsm4ecSAfaHq4N7HpaMOJBv5utDDhp1ch',
+          },
+        },
+      )
+      .then(res => {
+        this.setState({arrList: res.data.data});
+        // console.log(this.state.arrList);
+      })
 
-        .catch(function (error) {
-          console.log(error);
-        });
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   render() {
     return (
-        <>
-          <StatusBar barStyle="light-content" />
-          <SafeAreaView style={styles.container}>
-            <ScrollView
-                showsVerticalScrollIndicator={false}
-                contentInsetAdjustmentBehavior="automatic"
-                style={styles.scrollView}
-                scrollEventThrottle={16}
-                onScroll={Animated.event([
-                  {
-                    nativeEvent: {
-                      contentOffset: {
-                        y: this.tabsScroll,
-                      },
-                    },
+      <>
+        <StatusBar barStyle="light-content" />
+        <SafeAreaView style={styles.container}>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            contentInsetAdjustmentBehavior="automatic"
+            style={styles.scrollView}
+            scrollEventThrottle={16}
+            onScroll={Animated.event([
+              {
+                nativeEvent: {
+                  contentOffset: {
+                    y: this.tabsScroll,
                   },
-                ])}>
-              <Header />
-              <View style={styles.body}>
-                {this.state.arrList.map((el, i) => (
-                    <Content
-                        key={i}
-                        img={el.urls.small}
-                        title={el.title}
-                        description={el.title}
-                        amount={el.target_amount}
-                    />
-                ))}
+                },
+              },
+            ])}>
+            <Header />
+            <View style={styles.body}>
+              {this.state.arrList.map((el, i) => (
+                <Content
+                  key={i}
+                  img={el.urls.small}
+                  title={el.title}
+                  description={el.title}
+                  amount={el.target_amount}
+                />
+              ))}
 
-                {/* First step => Static Data
-
+              {/* First step => Static Data
+              
               <Content
                 img={require('../assets/Frame.png')}
                 title="Step Two"
@@ -152,11 +152,11 @@ class LandingScreen extends Component {
                 description="Build school Kalutare Sri Lanka "
                 amount="$ 5000"
               /> */}
-              </View>
-            </ScrollView>
-            <Tabs style={{transform: [{translateY: this.tabsTop}]}} />
-          </SafeAreaView>
-        </>
+            </View>
+          </ScrollView>
+          <Tabs style={{transform: [{translateY: this.tabsTop}]}} />
+        </SafeAreaView>
+      </>
     );
   }
 }
@@ -165,6 +165,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     position: 'relative',
+    backgroundColor:'white'
   },
   scrollView: {},
   image: {

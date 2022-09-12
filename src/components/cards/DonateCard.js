@@ -10,12 +10,12 @@ const DonateCard = ({title, description, amount}) => {
       <View style={{alignItems: 'center'}}>
         <Image
           style={{
-            alignItems: 'center',
+            alignItems: 'center', 
             width: '100%',
             borderRadius: 10,
             marginTop: '6%',
           }}
-          source={require('../../assets/frame.webp')}
+          source={require('../../assets/Frame.webp')}
         />
       </View>
 
@@ -50,11 +50,7 @@ const styles = StyleSheet.create({
     marginTop: 32,
     paddingHorizontal: 24,
     marginHorizontal: '5.5%',
-
     shadowRadius: 12.35,
-
-
-
     elevation: 6,
     borderRadius: 10,
   },

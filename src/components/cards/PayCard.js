@@ -48,7 +48,6 @@ const styles = StyleSheet.create({
     shadowRadius: 12.35,
     shadowColor: '#A9A9A9',
 
-
     elevation: 6,
   },
   sectionTitle: {
