@@ -26,7 +26,7 @@ const Content = ({title, description, amount, img}) => {
                   borderRadius: 10,
                   height: 152,
                 }}
-                source={img}
+                source={{uri:img}}
               />
             }
           </View>
