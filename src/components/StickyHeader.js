@@ -1,7 +1,7 @@
 import {StyleSheet, View, Text, Image, Animated} from 'react-native';
 import React from 'react';
 
-const Tabs = ({style}) => {
+const StickyHeader = ({style}) => {
   return (
     <Animated.View horizontal style={[styles.tabs, style]}>
       <View
@@ -26,7 +26,7 @@ const Tabs = ({style}) => {
   );
 };
 
-export default Tabs;
+export default StickyHeader;
 
 const styles = StyleSheet.create({
   tabs: {

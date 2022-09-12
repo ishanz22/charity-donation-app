@@ -7,7 +7,7 @@ import {
   StatusBar,
   Animated,
 } from 'react-native';
-import Tabs from '../components/Tabs';
+import StickyHeader from '../components/StickyHeader';
 import Header from '../components/Header';
 import Content from '../components/Content';
 import axios from 'axios';
@@ -154,7 +154,7 @@ class LandingScreen extends Component {
               /> */}
             </View>
           </ScrollView>
-          <Tabs style={{transform: [{translateY: this.tabsTop}]}} />
+          <StickyHeader style={{transform: [{translateY: this.tabsTop}]}} />
         </SafeAreaView>
       </>
     );
